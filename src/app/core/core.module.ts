@@ -7,7 +7,6 @@ import { AppRoutingModule } from '../app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { RecipeService } from '../recipes/recipe.service';
 import { DataStorageService } from '../shared/data-storage.service';
-import { AuthService } from 'src/app/auth/auth.service';
 import { HTTP_INTERCEPTORS } from '../../../node_modules/@angular/common/http';
 
 @NgModule({
@@ -26,7 +25,6 @@ import { HTTP_INTERCEPTORS } from '../../../node_modules/@angular/common/http';
     providers: [
         RecipeService, 
         DataStorageService, 
-        AuthService, 
         
         // The order in which the Interceptors are listed is the order of execution
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},   

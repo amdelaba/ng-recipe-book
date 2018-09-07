@@ -2,15 +2,13 @@ import { Injectable } from "@angular/core";
 import { RecipeService } from "../recipes/recipe.service";
 import { Recipe } from "../recipes/recipe.model";
 import 'rxjs/Rx';
-import { AuthService } from "../auth/auth.service";
 import { HttpClient, HttpParams, HttpRequest } from "../../../node_modules/@angular/common/http";
 
 @Injectable()
 export class DataStorageService {
 
     constructor(private httpClient: HttpClient, 
-        private recipeService: RecipeService,
-        private authService: AuthService){}
+        private recipeService: RecipeService){}
 
     storeRecipes() {
         // const token = this.authService.getToken();
