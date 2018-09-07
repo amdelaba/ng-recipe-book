@@ -13,7 +13,7 @@ export class DataStorageService {
         private authService: AuthService){}
 
     storeRecipes() {
-        const token = this.authService.getToken();
+        // const token = this.authService.getToken();
 
         // return this.httpClient.put('https://ng-recipe-book-5b1d6.firebaseio.com/recipes.json', 
         //     this.recipeService.getRecipes(), {
@@ -38,10 +38,8 @@ export class DataStorageService {
 
     getRecipes() {
 
-        const token = this.authService.getToken();
-
         // Can only define generics type (ie <Recipe[]>) if response is json
-        return this.httpClient.get<Recipe[]>('https://ng-recipe-book-5b1d6.firebaseio.com/recipes.json?auth=' + token)
+        return this.httpClient.get<Recipe[]>('https://ng-recipe-book-5b1d6.firebaseio.com/recipes.json')
         .map(
             (recipes) => {
                 // make sure ingredients array is always present even if empty
