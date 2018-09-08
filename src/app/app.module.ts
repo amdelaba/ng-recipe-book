@@ -11,6 +11,11 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from './../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -23,8 +28,14 @@ import { EffectsModule } from '@ngrx/effects';
     ShoppingListModule,
     AuthModule, 
     CoreModule,
+
+    // Ngrx related modules
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects]),
+    StoreRouterConnectingModule,
+    
+    // Only want StoreDevtoolsModule if not in production
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [], //moved all providers to core module
   bootstrap: [AppComponent]
