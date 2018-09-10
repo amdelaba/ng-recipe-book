@@ -1,9 +1,8 @@
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-
-import { Recipe } from '../recipe.model';
-import { RecipeService } from '../recipe.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as fromRecipe  from '../store/recipes.reducers';
 
 @Component({
   selector: 'app-recipe-list',
@@ -11,29 +10,19 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-  recipes: Recipe[];
-  private subscription: Subscription;
+  recipeState: Observable<fromRecipe.State>;
 
-  constructor(private recipeService: RecipeService,
-    private router:Router,
-    private route: ActivatedRoute) {
+  constructor(private router:Router,
+    private route: ActivatedRoute,
+    private store: Store<fromRecipe.FeatureState>) {
   }
 
   ngOnInit() {
-    this.recipes = this.recipeService.getRecipes();
-    this.subscription = this.recipeService.recipeListUpdated
-    .subscribe(
-      (recipes: Recipe[]) => {
-        this.recipes = recipes;
-      }
-    );
+    this.recipeState = this.store.select('recipes');
   }
 
   onNewRecipe() {
     this.router.navigate(['new'], {relativeTo: this.route}); //already on /recipes so use relative route
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();   
-  }
 }

@@ -13,7 +13,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes,           //only use forRoot in rootmodule, otherwise use forChild
-         {preloadingStrategy: PreloadAllModules})],     // Preloads all lazy loaded modules (eg RecipesModule)
+         {preloadingStrategy: PreloadAllModules})],     // Preloads all lazy loaded modules (eg RecipesModule), optional
     exports: [RouterModule]
 })
 

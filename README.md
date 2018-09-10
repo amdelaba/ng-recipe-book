@@ -30,5 +30,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 npm install --save @ngrx/store
 npm install --save @ngrx/effects
-npm install --save @ngrx/router-store
-npm install --save @ngrx/store-devtools
+npm install --save @ngrx/router-store 
+
+
+npm install --save @ngrx/store-devtools 
+-- Install redux devtool extension for chrome

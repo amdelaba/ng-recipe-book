@@ -37,7 +37,7 @@ import { environment } from './../environments/environment';
     // Only want StoreDevtoolsModule if not in production
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [], //moved all providers to core module
+  providers: [], //moved all providers to core modulew
   bootstrap: [AppComponent]
 })
 export class AppModule { }

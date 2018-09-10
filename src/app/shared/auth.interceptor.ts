@@ -14,8 +14,9 @@ export class AuthInterceptor implements HttpInterceptor {
 
         // switchMap: insteaf of map, to avoid double wrapping in Observables
         // take(1): only get this value once, as opposed to continous subscription
-        return this.store.select('auth').take(1).switchMap(
-            (authState: fromAuth.State) =>{
+        return this.store.select('auth')
+            .take(1)
+            .switchMap( (authState: fromAuth.State) =>{
                 const copiedReq = req.clone({params: req.params.set('auth', authState.token )});
                 return next.handle(copiedReq);
             }  

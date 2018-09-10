@@ -9,6 +9,10 @@ import { ReactiveFormsModule } from "../../../node_modules/@angular/forms";
 import { CommonModule } from "../../../node_modules/@angular/common";
 import { RecipesComponent } from "./recipes.component";
 import { RecipeRoutingModule } from "./recipes-routing.module";
+import { StoreModule } from '@ngrx/store';
+import { recipeReducer } from './store/recipes.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { RecipesEffects } from './store/recipes.effects';
 
 @NgModule({
     declarations: [
@@ -23,7 +27,14 @@ import { RecipeRoutingModule } from "./recipes-routing.module";
         CommonModule, //Use CommonModule in feature modules, not BrowserModule (includes common directives)
         ReactiveFormsModule,
         RecipeRoutingModule,
-        SharedModule
+        SharedModule,
+
+        // tells ngrx to add this reducer and state to the global app state once 
+        // the lazily loaded module has been added to the app
+        StoreModule.forFeature('recipes', recipeReducer),  // forFeatures(name of feature, feature reducer)
+        EffectsModule.forFeature([RecipesEffects])
+
+
     ]
 
 })
