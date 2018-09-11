@@ -22,7 +22,14 @@ import { environment } from './../environments/environment';
     AppComponent,
   ],
   imports: [
-    BrowserModule,   //Use BrowserModule in appmodule (contains all features in CommonModule plus more)
+    // BrowserModule,   //Use BrowserModule in appmodule (contains all features in CommonModule plus more)
+
+    // For Angular Universal
+    // Add .withServerTransition() to support Universal rendering.
+    // The application ID can be any identifier which is unique on
+    // the page 
+    BrowserModule.withServerTransition({appId: 'my-app'}),
+    
     HttpClientModule,
     SharedModule,
     ShoppingListModule,
