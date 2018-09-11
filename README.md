@@ -32,6 +32,8 @@ npm install --save @ngrx/store
 npm install --save @ngrx/effects
 npm install --save @ngrx/router-store 
 
+rxjs-compat is also installed
+
 
 npm install --save @ngrx/store-devtools 
 -- Install redux devtool extension for chrome
